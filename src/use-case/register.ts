@@ -3,24 +3,24 @@ import { hash } from 'bcryptjs'
 import { UserAlreadyExistsError } from './errors/user-already-exists'
 import { User } from '@prisma/client'
 
-interface RegisterServerRequest {
+interface RegisterUseCaseRequest {
   name: string
   email: string
   password: string
 }
 
-interface RegisterServerResponse {
+interface RegisterUseCaseResponse {
   user: User
 }
 
-export class RegisterServer {
+export class RegisterUseCase {
   constructor(private usersRepository: UsersRepository) {}
 
   async execute({
     name,
     email,
     password,
-  }: RegisterServerRequest): Promise<RegisterServerResponse> {
+  }: RegisterUseCaseRequest): Promise<RegisterUseCaseResponse> {
     const password_hash = await hash(password, 6)
 
     const userWithSameEmail = await this.usersRepository.findByEmail(email)

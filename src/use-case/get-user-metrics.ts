@@ -1,10 +1,10 @@
 import { CheckInsRepository } from '@/repositories/check-ins-repository'
 
-interface GetUserMetricsServeRequest {
+interface GetUserMetricsUseCaseequest {
   userId: string
 }
 
-interface GetUserMetricsServeResponse {
+interface GetUserMetricsUseCaseesponse {
   checkInsCount: number
 }
 
@@ -13,7 +13,7 @@ export class GetUserMetricsServe {
 
   async execute({
     userId,
-  }: GetUserMetricsServeRequest): Promise<GetUserMetricsServeResponse> {
+  }: GetUserMetricsUseCaseequest): Promise<GetUserMetricsUseCaseesponse> {
     const checkInsCount = await this.checkInsRepository.countByUserId(userId)
 
     return {

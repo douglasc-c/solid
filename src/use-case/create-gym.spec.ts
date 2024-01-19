@@ -1,21 +1,21 @@
 import { compare } from 'bcryptjs'
 import { expect, describe, it, beforeEach } from 'vitest'
-import { RegisterServer } from './register'
+import { RegisterUseCase } from './register'
 import { InMemoryGymsRepository } from '@/repositories/in-memory/in-memory-gyms-repository'
-import { CreateGymServer } from './create-gym'
+import { CreateGymUseCase } from './create-gym'
 
 let gymsRepository: InMemoryGymsRepository
-let sut: CreateGymServer
+let sut: CreateGymUseCase
 
-describe('Create Gym Server', () => {
+describe('Create GymUse Case', () => {
   beforeEach(() => {
     gymsRepository = new InMemoryGymsRepository()
-    sut = new CreateGymServer(gymsRepository)
+    sut = new CreateGymUseCase(gymsRepository)
   })
 
   it('should be able to register', async () => {
     const { gym } = await sut.execute({
-      title: 'Gym Server',
+      title: 'GymUse Case',
       description: null,
       phone: null,
       latitude: -27.0747279,
