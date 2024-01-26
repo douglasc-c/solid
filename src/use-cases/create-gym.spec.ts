@@ -1,6 +1,4 @@
-import { compare } from 'bcryptjs'
 import { expect, describe, it, beforeEach } from 'vitest'
-import { RegisterUseCase } from './register'
 import { InMemoryGymsRepository } from '@/repositories/in-memory/in-memory-gyms-repository'
 import { CreateGymUseCase } from './create-gym'
 
@@ -15,7 +13,7 @@ describe('Create GymUse Case', () => {
 
   it('should be able to register', async () => {
     const { gym } = await sut.execute({
-      title: 'GymUse Case',
+      title: 'Gym Use Case',
       description: null,
       phone: null,
       latitude: -27.0747279,
